@@ -21,7 +21,7 @@ export default defineConfig({
         },
 
         workbox: {
-            globPatterns: [ "**/*.{js,css,html,svg,png,ico}" ],
+            globPatterns: [ "**/*.{js,css,html,svg,png,ico,ogg}" ],
             cleanupOutdatedCaches: true,
             clientsClaim: true
         },
@@ -31,6 +31,8 @@ export default defineConfig({
             navigateFallback: "index.html",
             suppressWarnings: true,
             type: "module"
-        }
-    }) ]
+        },
+        base: "/MrKrabsSimulator/"
+    }) ],
+    base: "/MrKrabsSimulator/"
 })
