@@ -1,6 +1,6 @@
 <template>
     <div id="splash">
-        <video src="/hello.webm" autoplay onclick="!this.playing && this.play();"></video>
+        <video src="/hello.webm" autoplay onclick="this.paused && this.play();"></video>
         <section>
             <h1>Mr. Krabs Simulator</h1>
             <h2>MONEY!!</h2>
