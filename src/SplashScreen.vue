@@ -14,15 +14,17 @@
     height: 100vh;
     height: 100svh;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #splash section {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
     color: red;
     text-shadow: 0 0 10px black, 0 0 20px black;
+    font-size: 2em;
+    -webkit-text-stroke: 3px black;
 }
 
 #splash h1, h2 {
@@ -31,8 +33,12 @@
 }
 
 #splash video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -1;
 }
 </style>
