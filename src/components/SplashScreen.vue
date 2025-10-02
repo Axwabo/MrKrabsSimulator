@@ -5,6 +5,7 @@
             <h1>Mr. Krabs Simulator</h1>
             <h2>MONEY!!</h2>
         </section>
+        <button>Play</button>
     </div>
 </template>
 
@@ -18,9 +19,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 2rem;
 }
 
 #splash section {
+    z-index: 1;
     color: red;
     text-shadow: 0 0 10px black, 0 0 20px black;
     font-size: 2em;
@@ -39,6 +42,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+}
+
+#splash button {
+    z-index: 1;
+    font-size: 2rem;
 }
 </style>
