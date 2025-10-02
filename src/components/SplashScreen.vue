@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const emit = defineEmits([ "play" ]);
+</script>
+
 <template>
     <div id="splash">
         <video src="/hello.webm" autoplay onclick="this.paused && this.play();"></video>
@@ -5,7 +9,7 @@
             <h1>Mr. Krabs Simulator</h1>
             <h2>MONEY!!</h2>
         </section>
-        <button>Play</button>
+        <button v-on:click="emit('play')">Play</button>
     </div>
 </template>
 
