@@ -11,16 +11,13 @@ const { location } = storeToRefs(useGameStore());
 <template>
     <LocationPage location="Office" v-show="location === 'Office'" />
     <LocationPage location="Dining Hall" v-show="location === 'Dining Hall'" />
-    <img :src="krabs" alt="" class="mr-krabs">
+    <LocationPage location="Kitchen" v-show="location === 'Kitchen'" />
+    <img :src="krabs" alt="" class="character">
     <Money />
 </template>
 
 <style scoped>
-.mr-krabs {
-    max-width: 50vw;
-    position: absolute;
-    bottom: 2rem;
+.character {
     left: 2rem;
-    pointer-events: none;
 }
 </style>

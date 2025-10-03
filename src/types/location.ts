@@ -1,5 +1,7 @@
 import office from "/images/office.webp";
 import hall from "/images/hall.webp";
+import spongeBob from "/images/spunch-bob.webp";
+import squidward from "/images/squidward.webp";
 
 export type Location = "Kitchen" | "Dining Hall" | "Delivery" | "Office";
 
@@ -17,4 +19,9 @@ const navigation: Record<Location, { left?: Location, right?: Location }> = {
     "Delivery": {}
 } as const;
 
-export { locationSources, navigation };
+const characters: Partial<Record<Location, string>> = {
+    "Dining Hall": squidward,
+    "Kitchen": spongeBob
+} as const;
+
+export { locationSources, navigation, characters };

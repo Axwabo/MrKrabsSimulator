@@ -61,3 +61,11 @@ button:focus-visible {
 #app > main {
     flex: 1;
 }
+
+.character {
+    max-width: 50vw;
+    max-height: 50vh;
+    position: absolute;
+    bottom: 2rem;
+    pointer-events: none;
+}
