@@ -10,6 +10,7 @@ const { location } = storeToRefs(useGameStore());
 
 <template>
     <LocationPage location="Office" v-show="location === 'Office'" />
+    <LocationPage location="Dining Hall" v-show="location === 'Dining Hall'" />
     <img :src="krabs" alt="" class="mr-krabs">
     <Money />
 </template>
@@ -20,5 +21,6 @@ const { location } = storeToRefs(useGameStore());
     position: absolute;
     bottom: 2rem;
     left: 2rem;
+    pointer-events: none;
 }
 </style>

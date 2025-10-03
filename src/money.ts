@@ -7,7 +7,7 @@ export default function playMoney() {
         count++;
         if (!e.paused)
             continue;
-        e.play();
+        void e.play();
         return;
     }
     if (count >= 50)
