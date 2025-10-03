@@ -1,31 +1,36 @@
 <script setup lang="ts">
 import coin from "/images/coin.webp";
 import useGameStore from "../gameStore.ts";
-import { nextTick, onMounted, ref } from "vue";
+import { computed, nextTick, onMounted, ref } from "vue";
 
 const { earn } = useGameStore();
 
-const position = ref("-100vw");
+const from = ref(window.innerWidth * 2);
+const to = ref(0);
+
+const fromPx = computed(() => `${from.value}px`);
+const toPx = computed(() => `${to.value}px`);
 
 const speed = ref("1s");
 
 function collectCoin() {
     earn(0.25);
-    speed.value = "0";
     nextTick(rollNext);
 }
 
-function rollNext() {
+function rollNext(applySpeed: boolean = true) {
     const offset = window.innerWidth * (Math.random() * 10 + 1);
-    speed.value = `${offset / 192}s`;
-    position.value = `${Math.random() < 0.5 ? -offset : offset + 100}px 0`;
+    if (applySpeed)
+        speed.value = `${Math.abs(from.value - offset) / 1000}s`;
+    from.value = to.value;
+    to.value = offset * Math.sign(Math.random() - 0.5);
 }
 
-onMounted(() => nextTick(rollNext));
+onMounted(() => rollNext(false));
 </script>
 
 <template>
-    <div class="quarter" v-on:transitionend="rollNext()">
+    <div class="quarter" v-on:animationend="rollNext()">
         <img :src="coin" alt="" v-on:click="collectCoin()">
     </div>
 </template>
@@ -35,22 +40,30 @@ onMounted(() => nextTick(rollNext));
     position: absolute;
     left: 50%;
     bottom: 0;
+    animation: move v-bind(speed) linear;
 }
 
 .quarter img {
     max-width: 1rem;
-    animation: coin 1s linear infinite;
-    translate: v-bind(position);
-    transition: translate v-bind(speed) linear;
+    animation: roll 1s linear infinite;
     user-select: none;
 }
 
-@keyframes coin {
+@keyframes roll {
     from {
         rotate: 0;
     }
     to {
         rotate: 1turn;
+    }
+}
+
+@keyframes move {
+    from {
+        translate: v-bind(fromPx) 0;
+    }
+    to {
+        translate: v-bind(toPx) 0;
     }
 }
 </style>
