@@ -16,7 +16,6 @@
 body {
     margin: 0;
     display: flex;
-    place-items: center;
     width: 100vw;
     height: 100vh;
     height: 100svh;
@@ -54,5 +53,11 @@ button:focus-visible {
 }
 
 #app {
+    flex: 1;
+    display: flex;
+    position: relative;
+}
+
+#app > main {
     flex: 1;
 }

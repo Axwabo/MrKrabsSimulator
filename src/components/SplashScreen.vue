@@ -3,21 +3,18 @@ const emit = defineEmits([ "play" ]);
 </script>
 
 <template>
-    <div id="splash">
+    <main id="splash">
         <video src="/hello.webm" autoplay onclick="this.paused && this.play();"></video>
         <section>
             <h1>Mr. Krabs Simulator</h1>
             <h2>MONEY!!</h2>
         </section>
         <button v-on:click="emit('play')">Play</button>
-    </div>
+    </main>
 </template>
 
 <style scoped>
 #splash {
-    width: 100vw;
-    height: 100vh;
-    height: 100svh;
     position: relative;
     display: flex;
     justify-content: center;
