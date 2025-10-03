@@ -4,6 +4,7 @@ import useGameStore from "../gameStore.ts";
 import LocationPage from "./LocationPage.vue";
 import krabs from "/images/krabs.webp";
 import Money from "./Money.vue";
+import RandomQuarter from "./RandomQuarter.vue";
 
 const { location } = storeToRefs(useGameStore());
 </script>
@@ -12,6 +13,7 @@ const { location } = storeToRefs(useGameStore());
     <LocationPage location="Office" v-show="location === 'Office'" />
     <LocationPage location="Dining Hall" v-show="location === 'Dining Hall'" />
     <LocationPage location="Kitchen" v-show="location === 'Kitchen'" />
+    <RandomQuarter v-show="location === 'Dining Hall'" />
     <img :src="krabs" alt="" class="character">
     <Money />
 </template>
