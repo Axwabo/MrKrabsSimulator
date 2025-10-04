@@ -1,0 +1,11 @@
+{
+    "squid1": {
+        "speaker": "Squidward",
+        "text": "Can I get a break?",
+        "options": [
+            {
+                "text": "No"
+            }
+        ]
+    }
+}
