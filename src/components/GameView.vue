@@ -2,9 +2,10 @@
 import { storeToRefs } from "pinia";
 import useGameStore from "../gameStore.ts";
 import LocationPage from "./LocationPage.vue";
-import krabs from "/images/krabs.webp";
 import Money from "./Money.vue";
 import RandomQuarter from "./RandomQuarter.vue";
+import DialogDisplay from "./DialogDisplay.vue";
+import MrKrabs from "./MrKrabs.vue";
 
 const { location } = storeToRefs(useGameStore());
 </script>
@@ -14,12 +15,8 @@ const { location } = storeToRefs(useGameStore());
     <LocationPage location="Dining Hall" v-show="location === 'Dining Hall'" />
     <LocationPage location="Kitchen" v-show="location === 'Kitchen'" />
     <RandomQuarter v-show="location === 'Dining Hall'" />
-    <img :src="krabs" alt="" class="character">
+    <DialogDisplay />
+    <MrKrabs />
     <Money />
 </template>
 
-<style scoped>
-.character {
-    right: 2rem;
-}
-</style>

@@ -68,6 +68,5 @@ button:focus-visible {
     max-height: 40vh;
     position: absolute;
     bottom: 2rem;
-    pointer-events: none;
     user-select: none;
 }
