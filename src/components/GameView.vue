@@ -25,4 +25,3 @@ const { location } = storeToRefs(useGameStore());
     <MoneyAudio />
     <WalkingAudio />
 </template>
-

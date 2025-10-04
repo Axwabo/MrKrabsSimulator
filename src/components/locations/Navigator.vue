@@ -8,5 +8,5 @@ const { navigate } = useGameStore();
 </script>
 
 <template>
-    <button v-on:click="navigate(target)">To {{ target }}</button>
+    <button class="navigator" v-on:click="navigate(target)">To {{ target }}</button>
 </template>

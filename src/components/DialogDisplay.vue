@@ -1,19 +1,31 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import useDialogStore from "../dialogs/dialogStore.ts";
+import { ref, watch } from "vue";
 
 const { dialog: currentDialog } = storeToRefs(useDialogStore());
 
 const { choose } = useDialogStore();
+
+const element = ref<HTMLDialogElement>();
+
+watch(currentDialog, (dialog, previous) => {
+    if (!dialog)
+        element.value!.close();
+    else if (!previous)
+        element.value!.showModal();
+});
 </script>
 
 <template>
-    <dialog id="dialog" open v-if="!!currentDialog">
-        <h2>{{ currentDialog.speaker ?? "Mr. Krabs" }}</h2>
-        <p>{{ currentDialog.text }}</p>
-        <div class="dialog-buttons">
-            <button v-for="option in currentDialog.options" v-on:click="choose(option)">{{ option.text }}</button>
-        </div>
+    <dialog ref="element" id="dialog">
+        <template v-if="!!currentDialog">
+            <h2>{{ currentDialog.speaker ?? "Mr. Krabs" }}</h2>
+            <p>{{ currentDialog.text }}</p>
+            <div class="dialog-buttons">
+                <button v-for="option in currentDialog.options" v-on:click="choose(option)">{{ option.text }}</button>
+            </div>
+        </template>
     </dialog>
 </template>
 
@@ -24,13 +36,16 @@ const { choose } = useDialogStore();
     left: 50%;
     translate: -50% -50%;
     margin: 0;
-    background-color: rgba(0, 0, 0, 0.5);
     min-width: 25vw;
 }
 
 #dialog h2 {
     text-align: center;
     margin: 0;
+}
+
+#dialog button {
+    background-color: #444;
 }
 
 .dialog-buttons {
