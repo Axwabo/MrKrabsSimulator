@@ -20,6 +20,6 @@ const { location } = storeToRefs(useGameStore());
 
 <style scoped>
 .character {
-    left: 2rem;
+    right: 2rem;
 }
 </style>

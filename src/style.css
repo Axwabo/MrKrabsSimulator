@@ -65,8 +65,9 @@ button:focus-visible {
 
 .character {
     max-width: 50vw;
-    max-height: 50vh;
+    max-height: 40vh;
     position: absolute;
     bottom: 2rem;
     pointer-events: none;
+    user-select: none;
 }

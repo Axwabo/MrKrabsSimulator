@@ -34,6 +34,6 @@ const src = `url("${locationSources[location]}")`;
 }
 
 .character {
-    right: 2rem;
+    left: 2rem;
 }
 </style>
