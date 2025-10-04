@@ -6,6 +6,8 @@ import Money from "./Money.vue";
 import RandomQuarter from "./RandomQuarter.vue";
 import DialogDisplay from "./DialogDisplay.vue";
 import MrKrabs from "./MrKrabs.vue";
+import MoneyAudio from "./MoneyAudio.vue";
+import WalkingAudio from "./WalkingAudio.vue";
 
 const { location } = storeToRefs(useGameStore());
 </script>
@@ -18,5 +20,7 @@ const { location } = storeToRefs(useGameStore());
     <DialogDisplay />
     <MrKrabs />
     <Money />
+    <MoneyAudio />
+    <WalkingAudio />
 </template>
 
