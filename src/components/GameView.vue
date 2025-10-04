@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import useGameStore from "../gameStore.ts";
-import Money from "./Money.vue";
+import Stats from "./Stats.vue";
 import DialogDisplay from "./DialogDisplay.vue";
 import MrKrabs from "./MrKrabs.vue";
 import MoneyAudio from "./MoneyAudio.vue";
@@ -18,10 +18,10 @@ const { location } = storeToRefs(useGameStore());
     <Office location="Office" v-show="location === 'Office'" />
     <DiningHall v-show="location === 'Dining Hall'" />
     <Kitchen v-show="location === 'Kitchen'" />
-    <DriveThru v-show="location === 'Delivery'" />
+    <DriveThru v-show="location === 'Drive Thru'" />
     <DialogDisplay />
     <MrKrabs />
-    <Money />
+    <Stats />
     <MoneyAudio />
     <WalkingAudio />
 </template>

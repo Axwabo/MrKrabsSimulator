@@ -1,1 +1,1 @@
-export type Location = "Kitchen" | "Dining Hall" | "Delivery" | "Office";
+export type Location = "Kitchen" | "Dining Hall" | "Drive Thru" | "Office";

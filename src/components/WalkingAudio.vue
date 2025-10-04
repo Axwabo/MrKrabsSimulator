@@ -17,7 +17,3 @@ watch(location, () => {
 <template>
     <audio ref="element" :src="walk"></audio>
 </template>
-
-<style scoped>
-
-</style>

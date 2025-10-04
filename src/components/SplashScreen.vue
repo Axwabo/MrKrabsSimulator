@@ -5,10 +5,10 @@ const emit = defineEmits([ "play" ]);
 <template>
     <main id="splash">
         <video src="/hello.webm" autoplay onclick="this.paused && this.play();"></video>
-        <section>
+        <div>
             <h1>Mr. Krabs Simulator</h1>
             <h2>MONEY!!</h2>
-        </section>
+        </div>
         <button v-on:click="emit('play')">Play</button>
     </main>
 </template>
@@ -23,11 +23,11 @@ const emit = defineEmits([ "play" ]);
     gap: 2rem;
 }
 
-#splash section {
+#splash div {
     z-index: 1;
     color: red;
     text-shadow: 0 0 10px black, 0 0 20px black;
-    font-size: 2em;
+    font-size: 2.5em;
     -webkit-text-stroke: 3px black;
 }
 

@@ -5,7 +5,7 @@ import Navigator from "./Navigator.vue";
 <template>
     <main class="location">
         <Navigator target="Dining Hall" />
-        <Navigator target="Delivery" />
+        <Navigator target="Drive Thru" />
     </main>
 </template>
 
