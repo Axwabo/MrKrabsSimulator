@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import useGameStore from "../gameStore.ts";
-import LocationPage from "./LocationPage.vue";
 import Money from "./Money.vue";
-import RandomQuarter from "./RandomQuarter.vue";
 import DialogDisplay from "./DialogDisplay.vue";
 import MrKrabs from "./MrKrabs.vue";
 import MoneyAudio from "./MoneyAudio.vue";
 import WalkingAudio from "./WalkingAudio.vue";
+import Office from "./locations/Office.vue";
+import DiningHall from "./locations/DiningHall.vue";
+import Kitchen from "./locations/Kitchen.vue";
+import DriveThru from "./locations/DriveThru.vue";
 
 const { location } = storeToRefs(useGameStore());
 </script>
 
 <template>
-    <LocationPage location="Office" v-show="location === 'Office'" />
-    <LocationPage location="Dining Hall" v-show="location === 'Dining Hall'" />
-    <LocationPage location="Kitchen" v-show="location === 'Kitchen'" />
-    <RandomQuarter v-show="location === 'Dining Hall'" />
+    <Office location="Office" v-show="location === 'Office'" />
+    <DiningHall v-show="location === 'Dining Hall'" />
+    <Kitchen v-show="location === 'Kitchen'" />
+    <DriveThru v-show="location === 'Delivery'" />
     <DialogDisplay />
     <MrKrabs />
     <Money />
