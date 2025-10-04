@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Navigator from "./Navigator.vue";
 import RandomQuarter from "../RandomQuarter.vue";
+import Character from "../Character.vue";
+import squidward from "/images/squidward.webp";
 </script>
 
 <template>
@@ -8,6 +10,7 @@ import RandomQuarter from "../RandomQuarter.vue";
         <Navigator target="Office" />
         <Navigator target="Kitchen" />
         <RandomQuarter />
+        <Character :src="squidward" location="Dining Hall" />
     </main>
 </template>
 
