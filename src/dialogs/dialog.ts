@@ -11,7 +11,7 @@ export interface Dialog {
 
 export interface DialogOption {
     text: string;
-    nextId?: string;
+    nextIds?: string[];
     money?: number;
 }
 
@@ -19,10 +19,15 @@ type RawDialog = string | {
     speaker?: string;
     text: string;
     options?: RawOption[];
-    next?: string;
+    next?: string | string[];
 }
 
-type RawOption = string | { text: string; nextId?: string; };
+type RawOption = string | {
+    text: string;
+    money?: number;
+    nextId?: string;
+    nextIds?: string[];
+};
 
 const nextArray: DialogOption[] = [ { text: "Next" } ];
 
@@ -48,13 +53,15 @@ function mapDialog(id: string, rawDialog: RawDialog): Dialog {
             speaker: rawDialog.speaker ?? "Mr. Krabs",
             text: rawDialog.text,
             options: rawDialog.next
-                ? [ { text: "Next", nextId: rawDialog.next } ]
+                ? [ { text: "Next", nextIds: typeof rawDialog.next === "string" ? [ rawDialog.next ] : rawDialog.next } ]
                 : rawDialog.options?.map(mapOption) || nextArray
         };
 }
 
 function mapOption(raw: RawOption): DialogOption {
-    return typeof raw === "string" ? { text: raw } : raw;
+    return typeof raw === "string"
+        ? { text: raw }
+        : { text: raw.text, money: raw.money, nextIds: raw.nextId ? [ raw.nextId ] : raw.nextIds };
 }
 
 export const dialogs = mapDialogs();

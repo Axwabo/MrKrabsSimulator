@@ -23,17 +23,35 @@
                 "money": 4
             },
             {
-                "text": "Money?",
+                "text": "Ask for donation?",
                 "nextId": "donate"
             }
         ]
     },
     "donate": {
         "text": "Would you like to donate to help the poor?",
+        "next": [
+            "yesDonate",
+            "noDonate"
+        ]
+    },
+    "yesDonate": {
+        "text": "Here's 1 extra dollar.",
+        "speaker": "Customer",
         "options": [
             {
                 "text": "Next",
                 "money": 5
+            }
+        ]
+    },
+    "noDonate": {
+        "text": "No, thank you.",
+        "speaker": "Customer",
+        "options": [
+            {
+                "text": "Next",
+                "money": 4
             }
         ]
     }

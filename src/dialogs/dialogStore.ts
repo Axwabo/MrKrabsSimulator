@@ -9,6 +9,10 @@ interface State {
 
 const { earn } = useGameStore();
 
+function random<T>(list: T[]) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
 const store = defineStore("dialog", {
     state: (): State => ({ dialog: undefined }),
     actions: {
@@ -17,11 +21,14 @@ const store = defineStore("dialog", {
                 return;
             const list = interactions[location];
             if (list)
-                this.open(list[Math.floor(Math.random() * list.length)]);
+                this.open(random(list));
         },
         choose(option: DialogOption) {
             earn(option.money ?? 0);
-            this.open(option.nextId);
+            if (option.nextIds)
+                this.open(random(option.nextIds));
+            else
+                this.dialog = undefined;
         },
         open(id?: string) {
             if (!id) {
