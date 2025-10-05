@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import Navigator from "./Navigator.vue";
-import { storeToRefs } from "pinia";
-import useGameStore from "../../gameStore.ts";
-import { watch } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import useDialogStore from "../../dialogs/dialogStore.ts";
-
-const { location } = storeToRefs(useGameStore());
 
 const { interact } = useDialogStore();
 
-watch(location, value => {
-    if (value === "Drive Thru")
-        interact("Drive Thru");
-});
+const customers = ref(0);
+
+let timeout = 0;
+
+function queue() {
+    timeout = setTimeout(queue, Math.random() * 10000 + 5000);
+    customers.value++;
+}
+
+onMounted(queue);
+
+onUnmounted(() => clearTimeout(timeout));
 </script>
 
 <template>
     <main class="location">
         <Navigator target="Kitchen" />
+        <button :disabled="!customers" v-on:click="customers--; interact('Drive Thru')">Next Customer</button>
     </main>
 </template>
 
