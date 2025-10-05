@@ -7,12 +7,12 @@ import barnacles from "/audio/what-the-barnacles.ogg";
 </script>
 
 <template>
-    <main class="location">
+    <main id="diningHall" class="location">
         <Navigator target="Office" />
         <Navigator target="Kitchen" />
         <RandomQuarter />
         <Character :src="squidward" location="Dining Hall" />
-        <audio :src="barnacles" id="barnacles"></audio>
+        <audio :src="barnacles" class="locational"></audio>
     </main>
 </template>
 

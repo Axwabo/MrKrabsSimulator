@@ -1,9 +1,4 @@
-import type { Location } from "./location.ts";
-
-const characters: Partial<Record<Location, string>> = {
-    "Dining Hall": "barnacles",
-    "Kitchen": "spongeLaugh"
-};
+import { type Location, locationIDs } from "./location.ts";
 
 export function replay(element: HTMLAudioElement | null) {
     if (!element)
@@ -43,9 +38,9 @@ export function playSad() {
 }
 
 export function playCharacter(location: Location) {
-    const id = characters[location];
+    const id = locationIDs[location];
     if (id)
-        replay(document.querySelector(`audio#${id}`));
+        replay(document.querySelector(`#${id} audio.locational`));
 }
 
 export function playKrabs() {

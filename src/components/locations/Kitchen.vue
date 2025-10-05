@@ -6,11 +6,11 @@ import laugh from "/audio/sponge-laugh.ogg";
 </script>
 
 <template>
-    <main class="location">
+    <main id="kitchen" class="location">
         <Navigator target="Dining Hall" />
         <Navigator target="Drive Thru" />
         <Character :src="spongeBob" location="Kitchen" />
-        <audio :src="laugh" id="spongeLaugh"></audio>
+        <audio :src="laugh" class="locational"></audio>
     </main>
 </template>
 

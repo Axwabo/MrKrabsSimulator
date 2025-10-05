@@ -16,7 +16,7 @@ watch(location, () => replay(element.value!));
 </script>
 
 <template>
-    <img :src="krabs" alt="" class="character">
+    <img :src="krabs" alt="" id="mrKrabs" class="character">
     <audio ref="element" :src="walk"></audio>
     <audio :src="sad" id="sad"></audio>
     <audio :src="laugh" id="krabsLaugh"></audio>
