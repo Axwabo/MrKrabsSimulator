@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import coin from "/images/coin.webp";
+import sound from "/audio/coin-rolling.ogg";
 import useGameStore from "../gameStore.ts";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 const { earn } = useGameStore();
 
-const element = ref<HTMLDivElement>();
+const container = ref<HTMLDivElement>();
+
+const playback = ref<HTMLAudioElement>();
 
 const direction = ref<PlaybackDirection>("normal");
+
+let interval = 0;
 
 function collectCoin() {
     earn(0.25);
@@ -15,7 +20,8 @@ function collectCoin() {
 }
 
 function rollNext() {
-    const div = element.value!;
+    playback.value?.play();
+    const div = container.value!;
     div.getAnimations()[0]?.cancel();
     direction.value = Math.random() < 0.5 ? "reverse" : "normal";
     div.animate([
@@ -28,12 +34,22 @@ function rollNext() {
     }).addEventListener("finish", rollNext);
 }
 
-onMounted(rollNext);
+function setMute() {
+    playback.value!.muted = getComputedStyle(container.value!).visibility !== "visible";
+}
+
+onMounted(() => {
+    rollNext();
+    interval = setInterval(setMute, 20);
+});
+
+onUnmounted(() => clearInterval(interval));
 </script>
 
 <template>
-    <div ref="element" class="quarter">
+    <div ref="container" class="quarter">
         <img :src="coin" alt="" v-on:click="collectCoin()" draggable="false">
+        <audio ref="playback" :src="sound" loop muted></audio>
     </div>
 </template>
 
