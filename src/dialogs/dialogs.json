@@ -161,10 +161,10 @@
                     "Mr. Krabs": "SpongeBob, prepare 10000 Krabby Patties NOW!",
                     "Next": {
                         "Customer": "Surely, this won't take long...",
-                        "money": 20,
                         "Next": {
                             "Customer": "I ain't waiting this much!",
-                            "sad": true
+                            "sad": true,
+                            "money": 20
                         }
                     }
                 }
