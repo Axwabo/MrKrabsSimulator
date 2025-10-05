@@ -10,6 +10,7 @@ const emit = defineEmits([ "play" ]);
             <h2>MONEY!!</h2>
         </div>
         <button v-on:click="emit('play')">Play</button>
+        <button onclick="document.getElementById('app')?.requestFullscreen();">Fullscreen</button>
     </main>
 </template>
 
@@ -28,7 +29,8 @@ const emit = defineEmits([ "play" ]);
     color: red;
     text-shadow: 0 0 10px black, 0 0 20px black;
     font-size: 2.5em;
-    -webkit-text-stroke: 3px black;
+    -webkit-text-stroke: 5px black;
+    paint-order: stroke fill;
 }
 
 #splash h1, h2 {

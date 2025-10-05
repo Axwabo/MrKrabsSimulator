@@ -23,5 +23,6 @@ watch(location, () => replay(element.value!));
 <style scoped>
 .character {
     right: 2rem;
+    pointer-events: none;
 }
 </style>

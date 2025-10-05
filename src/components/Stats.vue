@@ -21,7 +21,8 @@ const { money, location } = storeToRefs(useGameStore());
     left: 50%;
     translate: -50% 0;
     text-align: center;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 3px black;
+    paint-order: stroke fill;
 }
 
 #money {
