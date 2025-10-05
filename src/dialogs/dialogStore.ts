@@ -3,6 +3,7 @@ import { type Dialog, type DialogOption, dialogs, interactions } from "./dialog.
 import useGameStore from "../gameStore.ts";
 import type { Location } from "../util/location.ts";
 import { playKrabs, playSad } from "../util/audio.ts";
+import jump from "../util/jump.ts";
 
 interface State {
     dialog: Dialog | undefined;
@@ -33,10 +34,13 @@ const store = defineStore("dialog", {
         },
         open(dialog?: string | Dialog) {
             this.dialog = typeof dialog === "string" ? dialogs[dialog] : dialog;
-            if (this.dialog?.sad)
+            if (!this.dialog)
+                return;
+            if (this.dialog.sad)
                 playSad();
-            if (this.dialog?.laugh)
+            if (this.dialog.laugh)
                 playKrabs();
+            jump(this.dialog.speaker);
         }
     }
 });

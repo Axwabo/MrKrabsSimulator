@@ -4,6 +4,7 @@ import useGameStore from "../../gameStore.ts";
 import { playMoney } from "../../util/audio.ts";
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
+import jump from "../../util/jump.ts";
 
 const { money } = storeToRefs(useGameStore());
 
@@ -13,7 +14,7 @@ const moneyPercentage = computed(() => Math.max(0, money.value) / 100);
 <template>
     <main class="location right">
         <Navigator target="Dining Hall" />
-        <div class="money-pile" v-on:click="playMoney()" />
+        <div class="money-pile" v-on:click="playMoney(); jump('Mr. Krabs')" />
     </main>
 </template>
 
