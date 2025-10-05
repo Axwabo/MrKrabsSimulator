@@ -15,29 +15,16 @@ export interface DialogOption {
     money?: number;
 }
 
-interface RawDialog {
-    id: string;
+type RawDialog = string | {
     speaker?: string;
     text: string;
     options?: RawOption[];
+    next?: string;
 }
 
 type RawOption = string | { text: string; nextId?: string; };
 
-function mapDialog(key: string, rawDialog: RawDialog): Dialog {
-    return {
-        id: key,
-        speaker: rawDialog.speaker ?? "Mr. Krabs",
-        text: rawDialog.text,
-        options: rawDialog.options?.map(mapOption) || [ {
-            text: "OK"
-        } ]
-    };
-}
-
-function mapOption(raw: RawOption): DialogOption {
-    return typeof raw === "string" ? { text: raw } : raw;
-}
+const nextArray: DialogOption[] = [ { text: "Next" } ];
 
 function mapDialogs() {
     const dialogs: Record<string, Dialog> = {};
@@ -46,6 +33,28 @@ function mapDialogs() {
         dialogs[key] = mapDialog(key, raw[<keyof typeof rawDialogs>key]); // genuinely wtf is this syntax, typescript
     }
     return dialogs;
+}
+
+function mapDialog(id: string, rawDialog: RawDialog): Dialog {
+    return typeof rawDialog === "string"
+        ? {
+            id,
+            speaker: "Mr. Krabs",
+            text: rawDialog,
+            options: nextArray
+        }
+        : {
+            id,
+            speaker: rawDialog.speaker ?? "Mr. Krabs",
+            text: rawDialog.text,
+            options: rawDialog.next
+                ? [ { text: "Next", nextId: rawDialog.next } ]
+                : rawDialog.options?.map(mapOption) || nextArray
+        };
+}
+
+function mapOption(raw: RawOption): DialogOption {
+    return typeof raw === "string" ? { text: raw } : raw;
 }
 
 export const dialogs = mapDialogs();

@@ -9,7 +9,32 @@
             }
         ]
     },
-    "noBreak": {
-        "text": "No break for you, Squidward, keep that sweet MONEY flowing!"
+    "noBreak": "No break for you, Squidward, keep that sweet MONEY flowing!",
+    "welcome1": {
+        "text": "Welcome to Krusty Krab, what can I get for you?",
+        "next": "customer1"
+    },
+    "customer1": {
+        "text": "I'd like 2 Krabby Patties, please.",
+        "speaker": "Customer",
+        "options": [
+            {
+                "text": "Coming right up!",
+                "money": 4
+            },
+            {
+                "text": "Money?",
+                "nextId": "donate"
+            }
+        ]
+    },
+    "donate": {
+        "text": "Would you like to donate to help the poor?",
+        "options": [
+            {
+                "text": "Next",
+                "money": 5
+            }
+        ]
     }
 }
