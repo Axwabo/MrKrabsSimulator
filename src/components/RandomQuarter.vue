@@ -3,6 +3,7 @@ import coin from "/images/coin.webp";
 import sound from "/audio/coin-rolling.ogg";
 import useGameStore from "../gameStore.ts";
 import { onMounted, onUnmounted, ref } from "vue";
+import jump from "../util/jump.ts";
 
 const { earn } = useGameStore();
 
@@ -17,6 +18,7 @@ let interval = 0;
 function collectCoin() {
     earn(0.25);
     rollNext();
+    jump("Mr. Krabs");
 }
 
 function rollNext() {
@@ -48,7 +50,7 @@ onUnmounted(() => clearInterval(interval));
 
 <template>
     <div ref="container" class="quarter">
-        <img :src="coin" alt="" v-on:click="collectCoin()" draggable="false">
+        <img :src="coin" alt="" v-on:click="collectCoin" draggable="false">
         <audio ref="playback" :src="sound" loop muted></audio>
     </div>
 </template>

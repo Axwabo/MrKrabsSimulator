@@ -2,6 +2,7 @@
 import Navigator from "./Navigator.vue";
 import { onMounted, onUnmounted, ref } from "vue";
 import useDialogStore from "../../dialogs/dialogStore.ts";
+import RandomCash from "../RandomCash.vue";
 
 const { interact } = useDialogStore();
 
@@ -22,6 +23,7 @@ onUnmounted(() => clearTimeout(timeout));
 <template>
     <main class="location">
         <Navigator target="Kitchen" />
+        <RandomCash />
         <button :disabled="!customers" v-on:click="customers--; interact('Drive Thru')">Next Customer</button>
     </main>
 </template>
