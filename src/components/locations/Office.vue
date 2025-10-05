@@ -3,8 +3,11 @@ import Navigator from "./Navigator.vue";
 import useGameStore from "../../gameStore.ts";
 import { playMoney } from "../../util/audio.ts";
 import { storeToRefs } from "pinia";
+import { computed } from "vue";
 
 const { money } = storeToRefs(useGameStore());
+
+const moneyPercentage = computed(() => Math.max(0, money.value) / 100);
 </script>
 
 <template>
@@ -20,7 +23,7 @@ const { money } = storeToRefs(useGameStore());
 }
 
 .money-pile {
-    --size: v-bind(money);
+    --size: v-bind(moneyPercentage);
     background-image: url("/images/cash.webp");
     background-position: bottom center;
     background-size: 2rem 1rem;
@@ -28,7 +31,7 @@ const { money } = storeToRefs(useGameStore());
     bottom: 40%;
     left: 55.5%;
     translate: -50% 0;
-    width: calc(var(--size) * 2rem / 100);
-    height: calc(var(--size) * 1rem / 100);
+    width: calc(var(--size) * 2rem);
+    height: calc(var(--size) * 1rem);
 }
 </style>

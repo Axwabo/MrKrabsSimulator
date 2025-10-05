@@ -6,11 +6,205 @@
             "laugh": true
         }
     },
+    "squid2": {
+        "Squidward": "Can I go home?",
+        "Not yet": {
+            "Mr. Krabs": "You have to keep counting me MONEY!",
+            "Next": {
+                "Squidward": "Even my eye bags have bags!"
+            }
+        },
+        "Ignore him": null
+    },
+    "squid3": {
+        "Squidward": "Interesting customers we have today...",
+        "Next": {
+            "Mr. Krabs": "Think about the MONEY we'll get!",
+            "laugh": true
+        }
+    },
+    "sponge1": {
+        "SpongeBob": "What's up, Mr. Krabs?",
+        "Money": {
+            "Mr. Krabs": "MONEY's up, great profits!",
+            "laugh": true
+        },
+        "Keep working": "Quit playing and cook those patties!"
+    },
+    "sponge2": {
+        "SpongeBob": "How many more patties do we need?",
+        "Lots": "Enough to make a thousand buckaroos!",
+        "I don't know": "Ask Squidward about that."
+    },
+    "sponge3": {
+        "SpongeBob": "Mr. Krabs, this is getting boring!",
+        "Money": {
+            "Mr. Krabs": "Think about the paycheck!",
+            "laugh": true
+        },
+        "Friend": "Don't worry, SpongeBob, you'll laugh with Patrick shortly!"
+    },
     "customer1": {
         "Customer": "I'd like 2 Krabby Patties, please.",
         "money": 4,
         "Coming right up!": null,
         "Ask for donation": "donate"
+    },
+    "customer2": {
+        "Customer": "Excuse me!? I've been waiting for ages! What is this?",
+        "We're busy": {
+            "Mr. Krabs": "Sorry, we're quite busy today. Can I get you anything?",
+            "Next": [
+                {
+                    "Customer": "No, and I'm leaving a bad review!",
+                    "sad": true
+                },
+                {
+                    "Customer": "One Krabby Patty, but make it quick!",
+                    "Coming right up!": [
+                        {
+                            "Customer": "I won't forget this waiting time!",
+                            "money": 2
+                        },
+                        {
+                            "Customer": "Take the change, I'm never coming back!",
+                            "money": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        "Blame SpongeBob": {
+            "Mr. Krabs": "Let me just get the workers to hurry...",
+            "Next": {
+                "Customer": "This is ridiculous!",
+                "Next": {
+                    "Mr. Krabs": "Here's your Patty, would you like a free water?",
+                    "money": 2,
+                    "Next": [
+                        {
+                            "Customer": "No, but at least there's some decency here..."
+                        },
+                        {
+                            "Customer": "You just saved yourself from a 1-star review..."
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "customer3": {
+        "Customer": "Last time I was here, the patty wasn't cooked properly! I want a refund!",
+        "Next": [
+            "noRefunds",
+            "noRefunds",
+            "noRefunds",
+            "noRefunds",
+            "noRefunds",
+            "noRefunds",
+            {
+                "Customer": "I read the policy, and the fine print says you owe 2 bucks!",
+                "Fine...": {
+                    "Mr. Krabs": "[sighs]",
+                    "sad": true,
+                    "money": -2
+                }
+            }
+        ]
+    },
+    "customer4": {
+        "Customer": "Do you sell the HamburgerCheeseburgerBigMacWhopper?",
+        "This is Krusty Krab": {
+            "Mr. Krabs": "This is the Krusty Krab, we sell the world-famous Krabby Patties!",
+            "Next": [
+                {
+                    "Customer": "Alright then, I'll have one of those.",
+                    "money": 2
+                },
+                {
+                    "Customer": "Bye bye!"
+                }
+            ]
+        },
+        "Rebrand a patty": {
+            "Mr. Krabs": "Oh yes, yes we do! SpongeBob, make a HamburgerCheeseburgerBigMacWhopper, quick!",
+            "Next": {
+                "Customer": "Awesome!",
+                "Next": {
+                    "Mr. Krabs": "That'll be $49.99.",
+                    "Next": [
+                        {
+                            "Customer": "That's rather expensive...",
+                            "Next": {
+                                "Mr. Krabs": "Here's your whopper!",
+                                "money": 50
+                            }
+                        },
+                        {
+                            "Customer": "What the barnacles, I'm not paying that much!",
+                            "sad": true
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "customer5": {
+        "Customer": "Do you take bulk orders?",
+        "Absolutely": {
+            "Mr. Krabs": "Why yes, absolutely! I'll be counting 'em dollars!",
+            "laugh": true,
+            "Next": {
+                "Customer": "10000 Krabby Patties then.",
+                "Panic": "What, that's... we don't have that many!",
+                "Start production": {
+                    "Mr. Krabs": "SpongeBob, prepare 10000 Krabby Patties NOW!",
+                    "Next": {
+                        "Customer": "Surely, this won't take long...",
+                        "money": 20,
+                        "Next": {
+                            "Customer": "I ain't waiting this much!",
+                            "sad": true
+                        }
+                    }
+                }
+            }
+        },
+        "Max 3": {
+            "Mr. Krabs": "We serve up to 3 Patties per customer. What would you like?",
+            "Next": "threePatties"
+        }
+    },
+    "noRefunds": "We don't do refunds.",
+    "threePatties": {
+        "Customer": "3 Krabby Patties.",
+        "Next": [
+            "accept3",
+            "accept3",
+            "accept3",
+            {
+                "Mr. Krabs": "Wait, you seem familiar...",
+                "Next": "Get out of the Krusty Krab!"
+            }
+        ]
+    },
+    "accept3": {
+        "Mr. Krabs": "Just a moment! Give me my MONEY until then.",
+        "money": 6,
+        "Next": {
+            "Mr. Krabs": "Anything else I could get you?",
+            "Next": [
+                {
+                    "Customer": "I'll leave now, thanks."
+                },
+                "threePatties",
+                "threePatties",
+                {
+                    "Customer": "That'll be it.",
+                    "Next": "donate"
+                }
+            ]
+        }
     },
     "donate": {
         "Mr. Krabs": "Would you like to donate to help the poor?",
@@ -18,6 +212,10 @@
             {
                 "Customer": "Here's 1 extra dollar.",
                 "money": 1
+            },
+            {
+                "Customer": "I'll spare some change...",
+                "money": 0.75
             },
             {
                 "Customer": "No, thank you.",

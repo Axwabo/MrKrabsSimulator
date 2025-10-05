@@ -1,8 +1,19 @@
 {
     "Dining Hall": [
-        "squid1"
+        "squid1",
+        "squid2",
+        "squid3"
+    ],
+    "Kitchen": [
+        "sponge1",
+        "sponge2",
+        "sponge3"
     ],
     "Drive Thru": [
-        "customer1"
+        "customer1",
+        "customer2",
+        "customer3",
+        "customer4",
+        "customer5"
     ]
 }

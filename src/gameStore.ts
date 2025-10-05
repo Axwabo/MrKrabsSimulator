@@ -12,10 +12,11 @@ const store = defineStore("game", {
     state: (): State => ({ location: "Office", money: 0 }),
     actions: {
         earn(amount: number) {
-            if (amount <= 0)
+            if (amount === 0)
                 return;
             this.money += amount;
-            playMoney();
+            if (amount > 0)
+                playMoney();
         },
         navigate(location: Location) {
             this.location = location;
