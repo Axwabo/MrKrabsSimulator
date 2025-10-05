@@ -2,14 +2,12 @@
 import { storeToRefs } from "pinia";
 import useGameStore from "../gameStore.ts";
 
-import { playMoney } from "../util/audio.ts";
-
 const { money, location } = storeToRefs(useGameStore());
 </script>
 
 <template>
     <div class="stats">
-        <span id="money" v-on:click="playMoney()">${{ money }}</span>
+        <span id="money">${{ money }}</span>
         <h1 id="location">{{ location }}</h1>
     </div>
 </template>
