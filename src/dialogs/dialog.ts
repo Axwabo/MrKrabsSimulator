@@ -6,13 +6,13 @@ export interface Dialog {
     speaker: string;
     text: string;
     options: DialogOption[];
+    sad?: boolean;
 }
 
 export interface DialogOption {
     text: string;
     next?: (string | Dialog)[];
     money?: number;
-    sad?: boolean;
 }
 
 type RawDialog = string | {
@@ -39,7 +39,7 @@ function mapDialog(raw: RawDialog): Dialog {
             options: [ { text: "Next" } ]
         };
     }
-    const dialog: Dialog = { options: [], speaker: "", text: "" };
+    const dialog: Dialog = { options: [], speaker: "", text: "", sad: raw.sad };
     const money = raw.money;
     for (const key of Object.keys(raw)) {
         if (key === "money" || key === "next" || key === "sad")
@@ -51,13 +51,23 @@ function mapDialog(raw: RawDialog): Dialog {
         }
         const option = (raw as any)[key];
         if (option)
-            dialog.options.push(typeof option === "string" && option.charAt(0) === option.charAt(0).toLowerCase() ? {
-                money,
-                text: "Next",
-                next: [ option ]
-            } : mapDialog(option));
+            dialog.options.push({
+                text: key,
+                next: Array.isArray(option) ? option.map(mapOption) : [ mapOption(option) ],
+                money
+            });
+        else
+            dialog.options.push({ text: key, money });
     }
+    if (dialog.options.length === 0)
+        dialog.options.push({ text: "Next", money });
     return dialog;
+}
+
+function mapOption(raw: any): string | Dialog {
+    return typeof raw === "string" && raw.charAt(0) === raw.charAt(0).toLowerCase()
+        ? raw
+        : mapDialog(raw);
 }
 
 export const dialogs = mapDialogs();

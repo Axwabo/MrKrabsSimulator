@@ -11,7 +11,7 @@
     },
     "donate": {
         "Mr. Krabs": "Would you like to donate to help the poor?",
-        "next": [
+        "Next": [
             {
                 "Customer": "Here's 1 extra dollar.",
                 "money": 1

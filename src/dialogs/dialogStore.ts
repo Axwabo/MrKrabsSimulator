@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { type Dialog, type DialogOption, dialogs, interactions } from "./dialog.ts";
 import useGameStore from "../gameStore.ts";
 import type { Location } from "../util/location.ts";
+import { playSad } from "../util/audio.ts";
 
 interface State {
     dialog: Dialog | undefined;
@@ -32,6 +33,8 @@ const store = defineStore("dialog", {
         },
         open(dialog?: string | Dialog) {
             this.dialog = typeof dialog === "string" ? dialogs[dialog] : dialog;
+            if (this.dialog?.sad)
+                playSad();
         }
     }
 });
