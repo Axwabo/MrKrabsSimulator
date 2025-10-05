@@ -4,7 +4,16 @@
         "text": "Can I get a break?",
         "options": [
             {
-                "text": "No"
+                "text": "No",
+                "nextId": "noBreak"
+            }
+        ]
+    },
+    "noBreak": {
+        "text": "No break for you, Squidward, keep that sweet MONEY flowing!",
+        "options": [
+            {
+                "text": "OK"
             }
         ]
     }
