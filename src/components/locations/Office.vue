@@ -28,7 +28,7 @@ const { money } = storeToRefs(useGameStore());
     bottom: 40%;
     left: 55.5%;
     translate: -50% 0;
-    width: calc(var(--size) * 2px / 4);
-    height: calc(var(--size) * 1px / 4);
+    width: calc(var(--size) * 2rem / 100);
+    height: calc(var(--size) * 1rem / 100);
 }
 </style>
