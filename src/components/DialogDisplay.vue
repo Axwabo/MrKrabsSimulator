@@ -36,11 +36,10 @@ watch(currentDialog, (dialog, previous) => {
     left: 50%;
     translate: -50% -50%;
     margin: 0;
-    min-width: 25vw;
+    min-width: 50vw;
 }
 
 #dialog h2 {
-    text-align: center;
     margin: 0;
 }
 

@@ -9,7 +9,7 @@ const { money, location } = storeToRefs(useGameStore());
 
 <template>
     <div class="stats">
-        <span id="money" v-on:click="playMoney()">💲 {{ money }}</span>
+        <span id="money" v-on:click="playMoney()">${{ money }}</span>
         <h1 id="location">{{ location }}</h1>
     </div>
 </template>
