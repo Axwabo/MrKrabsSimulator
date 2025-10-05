@@ -10,11 +10,6 @@
         ]
     },
     "noBreak": {
-        "text": "No break for you, Squidward, keep that sweet MONEY flowing!",
-        "options": [
-            {
-                "text": "OK"
-            }
-        ]
+        "text": "No break for you, Squidward, keep that sweet MONEY flowing!"
     }
 }

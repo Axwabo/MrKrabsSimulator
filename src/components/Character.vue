@@ -13,6 +13,7 @@ const { interact } = useDialogStore();
 
 <style scoped>
 .character {
+    cursor: pointer;
     left: 2rem;
 }
 </style>

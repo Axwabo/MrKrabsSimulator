@@ -20,7 +20,7 @@ watch(currentDialog, (dialog, previous) => {
 <template>
     <dialog ref="element" id="dialog">
         <template v-if="!!currentDialog">
-            <h2>{{ currentDialog.speaker ?? "Mr. Krabs" }}</h2>
+            <h2>{{ currentDialog.speaker }}</h2>
             <p>{{ currentDialog.text }}</p>
             <div class="dialog-buttons">
                 <button v-for="option in currentDialog.options" v-on:click="choose(option)">{{ option.text }}</button>
