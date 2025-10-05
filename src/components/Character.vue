@@ -15,5 +15,10 @@ const { interact } = useDialogStore();
 .character {
     cursor: pointer;
     left: 2rem;
+    transition: filter 0.2s;
+}
+
+.character:hover {
+    filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 2px white);
 }
 </style>

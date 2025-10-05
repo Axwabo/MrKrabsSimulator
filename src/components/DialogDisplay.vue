@@ -18,7 +18,7 @@ watch(currentDialog, (dialog, previous) => {
 </script>
 
 <template>
-    <dialog ref="element" id="dialog">
+    <dialog ref="element" id="dialog" closedby="none">
         <template v-if="!!currentDialog">
             <h2>{{ currentDialog.speaker }}</h2>
             <p>{{ currentDialog.text }}</p>
