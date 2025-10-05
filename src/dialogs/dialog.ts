@@ -3,66 +3,63 @@ import rawInteractions from "./interactions.json";
 import type { Location } from "../util/location.ts";
 
 export interface Dialog {
-    id: string;
-    speaker?: string;
+    speaker: string;
     text: string;
     options: DialogOption[];
 }
 
 export interface DialogOption {
     text: string;
-    nextIds?: string[];
+    next?: (string | Dialog)[];
     money?: number;
+    sad?: boolean;
 }
 
 type RawDialog = string | {
-    speaker?: string;
-    text: string;
-    options?: RawOption[];
-    next?: string | string[];
+    money?: number;
+    next?: RawDialog[];
+    sad?: true;
 }
 
-type RawOption = string | {
-    text: string;
-    money?: number;
-    nextId?: string;
-    nextIds?: string[];
-};
-
-const nextArray: DialogOption[] = [ { text: "Next" } ];
+type DialogID = keyof typeof rawDialogs;
 
 function mapDialogs() {
     const dialogs: Record<string, Dialog> = {};
-    const raw = rawDialogs as Record<keyof typeof rawDialogs, RawDialog>;
-    for (const key of Object.keys(raw)) {
-        dialogs[key] = mapDialog(key, raw[<keyof typeof rawDialogs>key]); // genuinely wtf is this syntax, typescript
-    }
+    const raw = rawDialogs as Record<DialogID, RawDialog>;
+    for (const key of Object.keys(raw))
+        dialogs[key] = mapDialog(raw[<DialogID>key]);
     return dialogs;
 }
 
-function mapDialog(id: string, rawDialog: RawDialog): Dialog {
-    return typeof rawDialog === "string"
-        ? {
-            id,
+function mapDialog(raw: RawDialog): Dialog {
+    if (typeof raw === "string") {
+        return {
             speaker: "Mr. Krabs",
-            text: rawDialog,
-            options: nextArray
-        }
-        : {
-            id,
-            speaker: rawDialog.speaker ?? "Mr. Krabs",
-            text: rawDialog.text,
-            options: rawDialog.next
-                ? [ { text: "Next", nextIds: typeof rawDialog.next === "string" ? [ rawDialog.next ] : rawDialog.next } ]
-                : rawDialog.options?.map(mapOption) || nextArray
+            text: raw,
+            options: [ { text: "Next" } ]
         };
-}
-
-function mapOption(raw: RawOption): DialogOption {
-    return typeof raw === "string"
-        ? { text: raw }
-        : { text: raw.text, money: raw.money, nextIds: raw.nextId ? [ raw.nextId ] : raw.nextIds };
+    }
+    const dialog: Dialog = { options: [], speaker: "", text: "" };
+    const money = raw.money;
+    for (const key of Object.keys(raw)) {
+        if (key === "money" || key === "next" || key === "sad")
+            continue;
+        if (!dialog.speaker) {
+            dialog.speaker = key;
+            dialog.text = (raw as any)[key];
+            continue;
+        }
+        const option = (raw as any)[key];
+        if (option)
+            dialog.options.push(typeof option === "string" && option.charAt(0) === option.charAt(0).toLowerCase() ? {
+                money,
+                text: "Next",
+                next: [ option ]
+            } : mapDialog(option));
+    }
+    return dialog;
 }
 
 export const dialogs = mapDialogs();
-export const interactions = rawInteractions as Partial<Record<Location, string[]>>;
+
+export const interactions = rawInteractions as Partial<Record<Location, DialogID[]>>;

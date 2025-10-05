@@ -25,21 +25,13 @@ const store = defineStore("dialog", {
         },
         choose(option: DialogOption) {
             earn(option.money ?? 0);
-            if (option.nextIds)
-                this.open(random(option.nextIds));
+            if (option.next)
+                this.open(random(option.next));
             else
                 this.dialog = undefined;
         },
-        open(id?: string) {
-            if (!id) {
-                this.dialog = undefined;
-                return;
-            }
-            const dialog = dialogs[id];
-            if (dialog)
-                this.dialog = { ...dialog, id };
-            else
-                this.dialog = undefined;
+        open(dialog?: string | Dialog) {
+            this.dialog = typeof dialog === "string" ? dialogs[dialog] : dialog;
         }
     }
 });

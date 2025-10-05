@@ -1,57 +1,24 @@
 {
     "squid1": {
-        "speaker": "Squidward",
-        "text": "Can I get a break?",
-        "options": [
-            {
-                "text": "No",
-                "nextId": "noBreak"
-            }
-        ]
-    },
-    "noBreak": "No break for you, Squidward, keep that sweet MONEY flowing!",
-    "welcome1": {
-        "text": "Welcome to Krusty Krab, what can I get for you?",
-        "next": "customer1"
+        "Squidward": "Can I get a break?",
+        "No": "No break for you, Squidward, keep that sweet MONEY flowing!"
     },
     "customer1": {
-        "text": "I'd like 2 Krabby Patties, please.",
-        "speaker": "Customer",
-        "options": [
-            {
-                "text": "Coming right up!",
-                "money": 4
-            },
-            {
-                "text": "Ask for donation?",
-                "nextId": "donate"
-            }
-        ]
+        "Customer": "I'd like 2 Krabby Patties, please.",
+        "money": 4,
+        "Coming right up!": null,
+        "Ask for donation": "donate"
     },
     "donate": {
-        "text": "Would you like to donate to help the poor?",
+        "Mr. Krabs": "Would you like to donate to help the poor?",
         "next": [
-            "yesDonate",
-            "noDonate"
-        ]
-    },
-    "yesDonate": {
-        "text": "Here's 1 extra dollar.",
-        "speaker": "Customer",
-        "options": [
             {
-                "text": "Next",
-                "money": 5
-            }
-        ]
-    },
-    "noDonate": {
-        "text": "No, thank you.",
-        "speaker": "Customer",
-        "options": [
+                "Customer": "Here's 1 extra dollar.",
+                "money": 1
+            },
             {
-                "text": "Next",
-                "money": 4
+                "Customer": "No, thank you.",
+                "sad": true
             }
         ]
     }
