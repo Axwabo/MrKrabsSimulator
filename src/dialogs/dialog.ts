@@ -1,6 +1,6 @@
 import rawDialogs from "./dialogs.json";
 import rawInteractions from "./interactions.json";
-import type { Location } from "../types/location.ts";
+import type { Location } from "../util/location.ts";
 
 export interface Dialog {
     id: string;

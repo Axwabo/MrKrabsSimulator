@@ -1,4 +1,9 @@
-export default function playMoney() {
+export function replay(element: HTMLAudioElement) {
+    element.currentTime = 0;
+    void element.play();
+}
+
+export function playMoney() {
     const container = document.getElementById("audio")!;
     let src = "";
     let count = 0;
@@ -16,4 +21,8 @@ export default function playMoney() {
     audio.src = src;
     audio.autoplay = true;
     container.append(audio);
+}
+
+export function playSad() {
+    replay(document.querySelector("audio#sad")!);
 }

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import useGameStore from "../gameStore.ts";
-import playMoney from "../money.ts";
+
+import { playMoney } from "../util/audio.ts";
 
 const { money, location } = storeToRefs(useGameStore());
 </script>

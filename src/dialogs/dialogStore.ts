@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { type Dialog, type DialogOption, dialogs, interactions } from "./dialog.ts";
 import useGameStore from "../gameStore.ts";
-import type { Location } from "../types/location.ts";
+import type { Location } from "../util/location.ts";
 
 interface State {
     dialog: Dialog | undefined;

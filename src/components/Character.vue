@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useDialogStore from "../dialogs/dialogStore.ts";
-import type { Location } from "../types/location.ts";
+import type { Location } from "../util/location.ts";
 
 const { src, location } = defineProps<{ src: string; location?: Location; }>();
 

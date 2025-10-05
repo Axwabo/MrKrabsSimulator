@@ -1,6 +1,7 @@
-import { type Location } from "./types/location.ts";
+import { type Location } from "./util/location.ts";
 import { defineStore } from "pinia";
-import playMoney from "./money.ts";
+
+import { playMoney } from "./util/audio.ts";
 
 interface State {
     location: Location;

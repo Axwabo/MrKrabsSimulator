@@ -5,7 +5,6 @@ import Stats from "./Stats.vue";
 import DialogDisplay from "./DialogDisplay.vue";
 import MrKrabs from "./MrKrabs.vue";
 import MoneyAudio from "./MoneyAudio.vue";
-import WalkingAudio from "./WalkingAudio.vue";
 import Office from "./locations/Office.vue";
 import DiningHall from "./locations/DiningHall.vue";
 import Kitchen from "./locations/Kitchen.vue";
@@ -23,5 +22,4 @@ const { location } = storeToRefs(useGameStore());
     <MrKrabs />
     <Stats />
     <MoneyAudio />
-    <WalkingAudio />
 </template>
