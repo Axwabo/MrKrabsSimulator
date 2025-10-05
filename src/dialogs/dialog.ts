@@ -7,6 +7,7 @@ export interface Dialog {
     text: string;
     options: DialogOption[];
     sad?: boolean;
+    laugh?: boolean;
 }
 
 export interface DialogOption {
@@ -19,6 +20,7 @@ type RawDialog = string | {
     money?: number;
     next?: RawDialog[];
     sad?: true;
+    laugh?: true;
 }
 
 type DialogID = keyof typeof rawDialogs;
@@ -39,10 +41,10 @@ function mapDialog(raw: RawDialog): Dialog {
             options: [ { text: "Next" } ]
         };
     }
-    const dialog: Dialog = { options: [], speaker: "", text: "", sad: raw.sad };
+    const dialog: Dialog = { options: [], speaker: "", text: "", sad: raw.sad, laugh: raw.laugh };
     const money = raw.money;
     for (const key of Object.keys(raw)) {
-        if (key === "money" || key === "next" || key === "sad")
+        if (key === "money" || key === "next" || key === "sad" || key === "laugh")
             continue;
         if (!dialog.speaker) {
             dialog.speaker = key;

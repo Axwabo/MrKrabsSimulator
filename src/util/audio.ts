@@ -1,4 +1,13 @@
-export function replay(element: HTMLAudioElement) {
+import type { Location } from "./location.ts";
+
+const characters: Partial<Record<Location, string>> = {
+    "Dining Hall": "barnacles",
+    "Kitchen": "spongeLaugh"
+};
+
+export function replay(element: HTMLAudioElement | null) {
+    if (!element)
+        return;
     element.currentTime = 0;
     void element.play();
 }
@@ -24,5 +33,15 @@ export function playMoney() {
 }
 
 export function playSad() {
-    replay(document.querySelector("audio#sad")!);
+    replay(document.querySelector("audio#sad"));
+}
+
+export function playCharacter(location: Location) {
+    const id = characters[location];
+    if (id)
+        replay(document.querySelector(`audio#${id}`));
+}
+
+export function playKrabs() {
+    replay(document.querySelector("audio#krabsLaugh"));
 }

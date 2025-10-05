@@ -3,6 +3,7 @@ import Navigator from "./Navigator.vue";
 import RandomQuarter from "../RandomQuarter.vue";
 import Character from "../Character.vue";
 import squidward from "/images/squidward.webp";
+import barnacles from "/audio/what-the-barnacles.ogg";
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import squidward from "/images/squidward.webp";
         <Navigator target="Kitchen" />
         <RandomQuarter />
         <Character :src="squidward" location="Dining Hall" />
+        <audio :src="barnacles" id="barnacles"></audio>
     </main>
 </template>
 

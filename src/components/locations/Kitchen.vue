@@ -2,6 +2,7 @@
 import Navigator from "./Navigator.vue";
 import Character from "../Character.vue";
 import spongeBob from "/images/spunch-bob.webp";
+import laugh from "/audio/sponge-laugh.ogg";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import spongeBob from "/images/spunch-bob.webp";
         <Navigator target="Dining Hall" />
         <Navigator target="Drive Thru" />
         <Character :src="spongeBob" location="Kitchen" />
+        <audio :src="laugh" id="spongeLaugh"></audio>
     </main>
 </template>
 

@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import useDialogStore from "../dialogs/dialogStore.ts";
 import type { Location } from "../util/location.ts";
+import { playCharacter } from "../util/audio.ts";
 
 const { src, location } = defineProps<{ src: string; location?: Location; }>();
 
 const { interact } = useDialogStore();
+
+function tap() {
+    if (!location)
+        return;
+    playCharacter(location);
+    interact(location);
+}
 </script>
 
 <template>
-    <img :src="src" alt="" class="character" v-on:click="location && interact(location)">
+    <img :src="src" alt="" class="character" v-on:click="tap">
 </template>
 
 <style scoped>

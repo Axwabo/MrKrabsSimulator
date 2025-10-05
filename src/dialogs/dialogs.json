@@ -1,7 +1,10 @@
 {
     "squid1": {
         "Squidward": "Can I get a break?",
-        "No": "No break for you, Squidward, keep that sweet MONEY flowing!"
+        "No": {
+            "Mr. Krabs": "No break for you, Squidward, keep that sweet MONEY flowing!",
+            "laugh": true
+        }
     },
     "customer1": {
         "Customer": "I'd like 2 Krabby Patties, please.",
